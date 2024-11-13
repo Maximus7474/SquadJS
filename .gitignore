@@ -12,3 +12,6 @@ yarn.lock
 # IDEs
 .idea/
 .vs/
+
+# Personal
+config-coalition.json
