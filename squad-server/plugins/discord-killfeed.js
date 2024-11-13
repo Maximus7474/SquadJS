@@ -54,40 +54,40 @@ export default class DiscordKillFeed extends DiscordBasePlugin {
     const fields = [
       {
         name: "Attacker's Name",
-        value: info.attacker.name,
+        value: `${info.attacker.name} [${info.attacker.steamID}](https://steamcommunity.com/profiles/${info.attacker.steamID})`,
         inline: true
       },
-      {
-        name: "Attacker's SteamID",
-        value: `[${info.attacker.steamID}](https://steamcommunity.com/profiles/${info.attacker.steamID})`,
-        inline: true
-      },
-      {
-        name: "Attacker's EosID",
-        value: info.attacker.eosID,
-        inline: true
-      },
+      // {
+      //   name: "Attacker's SteamID",
+      //   value: `[${info.attacker.steamID}](https://steamcommunity.com/profiles/${info.attacker.steamID})`,
+      //   inline: true
+      // },
+      // {
+      //   name: "Attacker's EosID",
+      //   value: info.attacker.eosID,
+      //   inline: true
+      // },
       {
         name: 'Weapon',
         value: info.weapon
       },
       {
         name: "Victim's Name",
-        value: info.victim ? info.victim.name : 'Unknown',
+        value: `${info.victim ? info.victim.name : 'Unknown'} ${info.victim ? `[${info.victim.steamID}](https://steamcommunity.com/profiles/${info.victim.steamID})` : ''}`,
         inline: true
       },
-      {
-        name: "Victim's SteamID",
-        value: info.victim
-          ? `[${info.victim.steamID}](https://steamcommunity.com/profiles/${info.victim.steamID})`
-          : 'Unknown',
-        inline: true
-      },
-      {
-        name: "Victim's EosID",
-        value: info.victim ? info.victim.eosID : 'Unknown',
-        inline: true
-      }
+      // {
+      //   name: "Victim's SteamID",
+      //   value: info.victim
+      //     ? `[${info.victim.steamID}](https://steamcommunity.com/profiles/${info.victim.steamID})`
+      //     : 'Unknown',
+      //   inline: true
+      // },
+      // {
+      //   name: "Victim's EosID",
+      //   value: info.victim ? info.victim.eosID : 'Unknown',
+      //   inline: true
+      // }
     ];
 
     if (!this.options.disableCBL)
