@@ -129,9 +129,7 @@ export default class DBLog extends BasePlugin {
       }
     });
 
-    this.createModel(
-      'SteamUser',
-      {
+    this.createModel('SteamUser', {
         steamID: {
           type: DataTypes.STRING,
           primaryKey: true
@@ -146,9 +144,7 @@ export default class DBLog extends BasePlugin {
       }
     );
 
-    this.createModel(
-      'Player',
-      {
+    this.createModel('Player', {
         id: {
           type: DataTypes.INTEGER,
           primaryKey: true,
@@ -184,9 +180,7 @@ export default class DBLog extends BasePlugin {
       }
     );
 
-    this.createModel(
-      'Wound',
-      {
+    this.createModel('Wound', {
         id: {
           type: DataTypes.INTEGER,
           primaryKey: true,
@@ -230,9 +224,7 @@ export default class DBLog extends BasePlugin {
       }
     );
 
-    this.createModel(
-      'Death',
-      {
+    this.createModel('Death', {
         id: {
           type: DataTypes.INTEGER,
           primaryKey: true,
@@ -279,9 +271,7 @@ export default class DBLog extends BasePlugin {
       }
     );
 
-    this.createModel(
-      'Revive',
-      {
+    this.createModel('Revive', {
         id: {
           type: DataTypes.INTEGER,
           primaryKey: true,
@@ -336,6 +326,39 @@ export default class DBLog extends BasePlugin {
         collate: 'utf8mb4_unicode_ci'
       }
     );
+
+    this.createModel('MatchStats', {
+      id: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true
+      },
+      map: {
+        type: DataTypes.STRING
+      },
+      level: {
+        type: DataTypes.STRING
+      },
+      endTime: {
+        type: DataTypes.DATE,
+        notNull: true
+      }, /* Winner */
+      winnerFaction: {
+        type: DataTypes.STRING
+      },
+      winnerSubFaction: {
+        type: DataTypes.STRING
+      }, /* Loser */
+      loserFaction: {
+        type: DataTypes.STRING
+      },
+      loserSubFaction: {
+        type: DataTypes.STRING
+      },
+      ticketDifference: {
+        type: DataTypes.INTEGER
+      }
+    });
 
     this.models.Server.hasMany(this.models.TickRate, {
       foreignKey: { name: 'server', allowNull: false },
@@ -441,6 +464,7 @@ export default class DBLog extends BasePlugin {
     this.onPlayerWounded = this.onPlayerWounded.bind(this);
     this.onPlayerDied = this.onPlayerDied.bind(this);
     this.onPlayerRevived = this.onPlayerRevived.bind(this);
+    this.onRoundEnd = this.onRoundEnd.bind(this);
     this.migrateSteamUsersIntoPlayers = this.migrateSteamUsersIntoPlayers.bind(this);
     this.dropAllForeignKeys = this.dropAllForeignKeys.bind(this);
   }
@@ -461,6 +485,7 @@ export default class DBLog extends BasePlugin {
     await this.models.Wound.sync();
     await this.models.Death.sync();
     await this.models.Revive.sync();
+    await this.models.MatchStats.sync();
   }
 
   async mount() {
@@ -482,6 +507,7 @@ export default class DBLog extends BasePlugin {
     this.server.on('PLAYER_WOUNDED', this.onPlayerWounded);
     this.server.on('PLAYER_DIED', this.onPlayerDied);
     this.server.on('PLAYER_REVIVED', this.onPlayerRevived);
+    this.server.on('ROUND_ENDED', this.onRoundEnd);
   }
 
   async unmount() {
@@ -492,6 +518,7 @@ export default class DBLog extends BasePlugin {
     this.server.removeEventListener('PLAYER_WOUNDED', this.onPlayerWounded);
     this.server.removeEventListener('PLAYER_DIED', this.onPlayerDied);
     this.server.removeEventListener('PLAYER_REVIVED', this.onPlayerRevived);
+    this.server.removeEventListener('ROUND_ENDED', this.onRoundEnd);
   }
 
   async onTickRate(info) {
@@ -685,6 +712,19 @@ export default class DBLog extends BasePlugin {
         conflictFields: ['steamID']
       }
     );
+  }
+
+  async onRoundEnd(info) {
+    this.matchStats = await this.models.MatchStats.create({
+      server: this.options.overrideServerID || this.server.id,
+      level: info.winner.level,
+      map: info.winner.layer,
+      winnerFaction: info.winner.faction,
+      winnerSubFaction: info.winner.subfaction,
+      loserFaction: info.loser.faction,
+      loserSubFaction: info.loser.subfaction,
+      ticketDifference: info.winner.tickets - info.loser.tickets
+    });
   }
 
   async migrateSteamUsersIntoPlayers() {
