@@ -44,6 +44,7 @@ export default class DiscordBasePlugin extends BasePlugin {
     await this.channel.send(message);
   }
 
+  /* Temporary Shit to get data when wanted */
   async sendDiscordDevMessage(message) {
     if (!this.channel2) {
       this.verbose(1, `Could not send Discord Dev Message. Channel2 not initialized.`);

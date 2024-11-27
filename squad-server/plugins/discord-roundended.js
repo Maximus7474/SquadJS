@@ -76,6 +76,7 @@ export default class DiscordRoundEnded extends DiscordBasePlugin {
       }
     });
 
+    /* Removable once tests are finished */
     await this.sendDiscordDevMessage({
       embed: {
         title: 'Round Ended - Dev Data',
