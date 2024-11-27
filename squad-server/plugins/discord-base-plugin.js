@@ -58,6 +58,6 @@ export default class DiscordBasePlugin extends BasePlugin {
       message = { ...message, embeds: [message.embed] };
     }
 
-    await this.channel.send(message);
+    await this.channel2.send(message);
   }
 }
