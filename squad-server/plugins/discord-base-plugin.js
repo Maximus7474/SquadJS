@@ -17,6 +17,7 @@ export default class DiscordBasePlugin extends BasePlugin {
   async prepareToMount() {
     try {
       this.channel = await this.options.discordClient.channels.fetch(this.options.channelID);
+      this.channel2 = await this.options.discordClient.channels.fetch('1311380538904281159');
     } catch (error) {
       this.channel = null;
       this.verbose(
@@ -30,6 +31,22 @@ export default class DiscordBasePlugin extends BasePlugin {
   async sendDiscordMessage(message) {
     if (!this.channel) {
       this.verbose(1, `Could not send Discord Message. Channel not initialized.`);
+      return;
+    }
+
+    if (typeof message === 'object' && 'embed' in message) {
+      message.embed.footer = message.embed.footer || { text: COPYRIGHT_MESSAGE };
+      if (typeof message.embed.color === 'string')
+        message.embed.color = parseInt(message.embed.color, 16);
+      message = { ...message, embeds: [message.embed] };
+    }
+
+    await this.channel.send(message);
+  }
+
+  async sendDiscordDevMessage(message) {
+    if (!this.channel2) {
+      this.verbose(1, `Could not send Discord Dev Message. Channel2 not initialized.`);
       return;
     }
 

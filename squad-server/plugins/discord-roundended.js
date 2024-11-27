@@ -75,5 +75,13 @@ export default class DiscordRoundEnded extends DiscordBasePlugin {
         timestamp: info.time.toISOString()
       }
     });
+
+    await this.sendDiscordDevMessage({
+      embed: {
+        title: 'Round Ended - Dev Data',
+        description: `\`\`\`json\n${JSON.stringify(info, null, 2)}\n\`\`\``,
+        timestamp: info.time.toISOString()
+      }
+    })
   }
 }
