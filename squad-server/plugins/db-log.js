@@ -346,10 +346,16 @@ export default class DBLog extends BasePlugin {
       winnerFaction: {
         type: DataTypes.STRING
       },
+      winnerFactionAcronym: {
+        type: DataTypes.STRING
+      },
       winnerSubFaction: {
         type: DataTypes.STRING
       }, /* Loser */
       loserFaction: {
+        type: DataTypes.STRING
+      },
+      loserFactionAcronym: {
         type: DataTypes.STRING
       },
       loserSubFaction: {
@@ -714,16 +720,29 @@ export default class DBLog extends BasePlugin {
     );
   }
 
+  static getFactionAcronym(factioName) {
+    const words = factioName.match(/\b\w+(?:'\w+)?\b/g); // Will ignore 's and combine it in the previous word.
+    if (!words) return factioName;
+
+    const acronym = words
+    .map(word => word[0].toUpperCase())
+    .join('');
+
+    return acronym;
+  }
+
   async onRoundEnd(info) {
     this.matchStats = await this.models.MatchStats.create({
-      server: this.options.overrideServerID || this.server.id,
-      level: info.winner.level,
-      map: info.winner.layer,
-      winnerFaction: info.winner.faction,
-      winnerSubFaction: info.winner.subfaction,
-      loserFaction: info.loser.faction,
-      loserSubFaction: info.loser.subfaction,
-      ticketDifference: info.winner.tickets - info.loser.tickets
+      server:               this.options.overrideServerID || this.server.id,
+      level:                info.winner.level,
+      map:                  info.winner.layer,
+      winnerFaction:        info.winner.faction,
+      winnerFactionAcronym: getFactionAcronym(info.winner.faction),
+      winnerSubFaction:     info.winner.subfaction,
+      loserFaction:         info.loser.faction,
+      loserFactionAcronym:  getFactionAcronym(info.loser.faction),
+      loserSubFaction:      info.loser.subfaction,
+      ticketDifference:     info.winner.tickets - info.loser.tickets
     });
   }
 
