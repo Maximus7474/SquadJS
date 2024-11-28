@@ -730,8 +730,8 @@ export default class DBLog extends BasePlugin {
       return match ? match[1] : null;
     }
 
-    const winner = FactionMapping[info.winner.faction];
-    const loser = FactionMapping[info.loser.faction];
+    const winner = FactionMapping[info.winner.subfaction] || {faction: info.winner.faction, subfaction: info.winner.subfaction};
+    const loser = FactionMapping[info.loser.subfaction] || {faction: info.loser.faction, subfaction: info.loser.subfaction};
 
     this.matchStats = await this.models.MatchStats.create({
       server:               this.options.overrideServerID || this.server.id,
