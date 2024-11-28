@@ -722,13 +722,13 @@ export default class DBLog extends BasePlugin {
     );
   }
 
-  getGameMode(layer) {
-    const regex = /\b(RAAS|AAS|Skirmish|Seed|Invasion)\b/i;
-    const match = layer.match(regex);
-    return match ? match[1] : null;
-  }
-
   async onRoundEnd(info) {
+
+    const getGameMode = (layer) => {
+      const regex = /\b(RAAS|AAS|Skirmish|Seed|Invasion)\b/i;
+      const match = layer.match(regex);
+      return match ? match[1] : null;
+    }
 
     const winner = FactionMapping[info.winner.faction];
     const loser = FactionMapping[info.loser.faction];
