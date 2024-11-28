@@ -722,7 +722,7 @@ export default class DBLog extends BasePlugin {
     );
   }
 
-  static getGameMode(layer) {
+  getGameMode(layer) {
     const regex = /\b(RAAS|AAS|Skirmish|Seed|Invasion)\b/i;
     const match = layer.match(regex);
     return match ? match[1] : null;
