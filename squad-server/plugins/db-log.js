@@ -4,6 +4,8 @@ import BasePlugin from './base-plugin.js';
 
 const { DataTypes, QueryTypes } = Sequelize;
 
+import FactionMapping from '../../data/factions.js';
+
 export default class DBLog extends BasePlugin {
   static get description() {
     return (
@@ -333,10 +335,10 @@ export default class DBLog extends BasePlugin {
         primaryKey: true,
         autoIncrement: true
       },
-      map: {
+      level: {
         type: DataTypes.STRING
       },
-      level: {
+      mode: {
         type: DataTypes.STRING
       },
       endTime: {
@@ -346,19 +348,19 @@ export default class DBLog extends BasePlugin {
       winnerFaction: {
         type: DataTypes.STRING
       },
-      winnerFactionAcronym: {
+      winnerRawFaction: {
         type: DataTypes.STRING
       },
-      winnerSubFaction: {
+      winnerFactionType: {
         type: DataTypes.STRING
       }, /* Loser */
       loserFaction: {
         type: DataTypes.STRING
       },
-      loserFactionAcronym: {
+      winnerRawFaction: {
         type: DataTypes.STRING
       },
-      loserSubFaction: {
+      loserFactionType: {
         type: DataTypes.STRING
       },
       ticketDifference: {
@@ -720,29 +722,33 @@ export default class DBLog extends BasePlugin {
     );
   }
 
-  static getFactionAcronym(factioName) {
-    const words = factioName.match(/\b\w+(?:'\w+)?\b/g); // Will ignore 's and combine it in the previous word.
-    if (!words) return factioName;
-
-    const acronym = words
-    .map(word => word[0].toUpperCase())
-    .join('');
-
-    return acronym;
+  static getGameMode(layer) {
+    const regex = /\b(RAAS|AAS|Skirmish|Seed|Invasion)\b/i;
+    const match = layer.match(regex);
+    return match ? match[1] : null;
   }
 
   async onRoundEnd(info) {
+
+    const winner = FactionMapping[info.winner.faction];
+    const loser = FactionMapping[info.loser.faction];
+
     this.matchStats = await this.models.MatchStats.create({
       server:               this.options.overrideServerID || this.server.id,
+      /* Level */
       level:                info.winner.level,
-      map:                  info.winner.layer,
-      winnerFaction:        info.winner.faction,
-      winnerFactionAcronym: getFactionAcronym(info.winner.faction),
-      winnerSubFaction:     info.winner.subfaction,
-      loserFaction:         info.loser.faction,
-      loserFactionAcronym:  getFactionAcronym(info.loser.faction),
-      loserSubFaction:      info.loser.subfaction,
-      ticketDifference:     info.winner.tickets - info.loser.tickets
+      mode:                 getGameMode(info.winner.level),
+      /* Winner */
+      winnerFaction:        winner.faction,
+      winnerFactionType:    winner.type,
+      winnerRawFaction:     `${info.winner.faction} - ${info.winner.subfaction}`,
+      /* Loser */
+      loserFaction:         loser.faction,
+      loserFactionType:     info.loser.faction,
+      loserRawFaction:      `${info.loser.faction} - ${info.loser.subfaction}`,
+      /* Misc */
+      ticketDifference:     info.winner.tickets - info.loser.tickets,
+      endTime:              new Date().getTime()
     });
   }
 
