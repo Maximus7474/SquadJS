@@ -357,7 +357,7 @@ export default class DBLog extends BasePlugin {
       loserFaction: {
         type: DataTypes.STRING
       },
-      winnerRawFaction: {
+      loserRawFaction: {
         type: DataTypes.STRING
       },
       loserFactionType: {
