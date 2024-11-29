@@ -737,7 +737,7 @@ export default class DBLog extends BasePlugin {
       server:               this.options.overrideServerID || this.server.id,
       /* Level */
       level:                info.winner.level,
-      mode:                 getGameMode(info.winner.level),
+      mode:                 getGameMode(info.winner.layer),
       /* Winner */
       winnerFaction:        winner.faction,
       winnerFactionType:    winner.type,
