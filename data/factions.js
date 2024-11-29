@@ -79,11 +79,19 @@ export default {
     "Irregular Armored Squadron": { faction: "INS", type: "Armored" },
     "Irregular Battle Group": { faction: "INS", type: "Combined Arms" },
     "Irregular Light Infantry": { faction: "INS", type: "Light Infantry" },
+    "Irregular Fire Support Group": { faction: "INS", type: "Combined Arms" },
   
     // RGF
     "6th Separate Tank Brigade": { faction: "RGF", type: "Armored" },
     "49th Combined Arms Army": { faction: "RGF", type: "Combined Arms" },
     "205th Separate Motor Rifle Brigade": { faction: "RGF", type: "Mechanized" },
     "336th Guards Naval Infantry Brigade": { faction: "RGF", type: "Amphibious Assault" },
+    "3rd Motor Rifle Brigade": { faction: "RGF", type: "Motorized"},
+    "78th Detached Logistics Brigade": { faction: "RGF", type: "Logistics"},
+
+    // PMC
+    "Overwatch 6 Patrol Group": { faction: "PMC", type: "Light Infantry"},
+    "Murk Water Air Wing": { faction: "PMC", type: "Air assault"},
+    "Manticore Security Task Force": { faction: "PMC", type: "Combined Arms"}
   };
   
