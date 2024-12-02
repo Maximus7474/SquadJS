@@ -55,7 +55,6 @@ export default {
   // PLA GF
   "9th Heavy Combined Arms Battalion": { faction: "PLA GF", type: "Armored" },
   "14th Amphibious Combined Arms Battalion": { faction: "PLA GF", type: "Combined Arms" },
-  "7th Marine Medium Battalion": { faction: "PLA GF", type: "Motorized" },
 
   // VDV
   "217th Guards Airborne Regiment": { faction: "VDV", type: "Air assault" },
