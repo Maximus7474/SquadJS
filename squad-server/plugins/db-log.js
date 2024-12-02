@@ -744,7 +744,7 @@ export default class DBLog extends BasePlugin {
       winnerRawFaction:     `${info.winner.faction} - ${info.winner.subfaction}`,
       /* Loser */
       loserFaction:         loser.faction,
-      loserFactionType:     info.loser.faction,
+      loserFactionType:     winner.type,
       loserRawFaction:      `${info.loser.faction} - ${info.loser.subfaction}`,
       /* Misc */
       ticketDifference:     info.winner.tickets - info.loser.tickets,
