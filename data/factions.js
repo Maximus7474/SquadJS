@@ -9,6 +9,7 @@ export default {
   "Queen's Royal Hussars Battle Group": { faction: "BAF", type: "Armored" },
   "3rd Division Battle Group": { faction: "BAF", type: "Combined Arms" },
   "Royal Logistics Corps Battle Group": { faction: "BAF", type: "Logistics" },
+  "1 Yorks Battle Group":{faction:"BAF", type:"Mechanized"},
 
   // CAF
   "3rd Battalion, Royal Canadian Regiment": { faction: "CAF", type: "Air assault" },
@@ -67,6 +68,7 @@ export default {
   "60th Prince Assur Armored Brigade": { faction: "MEA", type: "Armored" },
   "1st Battalion, Legion of Babylon": { faction: "MEA", type: "Combined Arms" },
   "4th Border Guards Group": { faction: "MEA", type: "Light Infantry" },
+  "3rd King Qadesh Mechanized Infantry Brigade": { faction: "MEA", type: "Mechanized" },
 
   // TLF
   "1st Commando Brigade Battle Group": { faction: "TLF", type: "Air assault" },
@@ -79,6 +81,8 @@ export default {
   "Irregular Battle Group": { faction: "INS", type: "Combined Arms" },
   "Irregular Light Infantry": { faction: "INS", type: "Light Infantry" },
   "Irregular Fire Support Group": { faction: "INS", type: "Combined Arms" },
+  "Irregular Mechanized Platoon"{ faction: "INS", type: "Mechanized" },
+
 
   // RGF
   "6th Separate Tank Brigade": { faction: "RGF", type: "Armored" },
