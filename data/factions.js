@@ -9,7 +9,7 @@ export default {
   "Queen's Royal Hussars Battle Group": { faction: "BAF", type: "Armored" },
   "3rd Division Battle Group": { faction: "BAF", type: "Combined Arms" },
   "Royal Logistics Corps Battle Group": { faction: "BAF", type: "Logistics" },
-  "1 Yorks Battle Group":{faction:"BAF", type:"Mechanized"},
+  "1 Yorks Battle Group": { faction: "BAF", type: "Mechanized" },
 
   // CAF
   "3rd Battalion, Royal Canadian Regiment": { faction: "CAF", type: "Air assault" },
@@ -81,7 +81,7 @@ export default {
   "Irregular Battle Group": { faction: "INS", type: "Combined Arms" },
   "Irregular Light Infantry": { faction: "INS", type: "Light Infantry" },
   "Irregular Fire Support Group": { faction: "INS", type: "Combined Arms" },
-  "Irregular Mechanized Platoon"{ faction: "INS", type: "Mechanized" },
+  "Irregular Mechanized Platoon": { faction: "INS", type: "Mechanized" },
 
 
   // RGF
