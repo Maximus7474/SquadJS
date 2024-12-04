@@ -62,6 +62,7 @@ export default {
   "104th Tank Battalion": { faction: "VDV", type: "Armored" },
   "7th Guards Mountain Air Assault Division": { faction: "VDV", type: "Combined Arms" },
   "150th Support Battalion": { faction: "VDV", type: "Logistics" },
+  "108th Guards Air Assault Regiment": { faction: "VDV", type: "Air assault" },
 
   // MEA
   "91st Air Assault Battalion": { faction: "MEA", type: "Air assault" },
@@ -82,6 +83,7 @@ export default {
   "Irregular Light Infantry": { faction: "INS", type: "Light Infantry" },
   "Irregular Fire Support Group": { faction: "INS", type: "Combined Arms" },
   "Irregular Mechanized Platoon": { faction: "INS", type: "Mechanized" },
+  "Irregular Motorized Platoon": { faction: "INS", type: "Motorized"},
 
 
   // RGF
@@ -91,6 +93,7 @@ export default {
   "336th Guards Naval Infantry Brigade": { faction: "RGF", type: "Amphibious Assault" },
   "3rd Motor Rifle Brigade": { faction: "RGF", type: "Motorized" },
   "78th Detached Logistics Brigade": { faction: "RGF", type: "Logistics" },
+  "1398th Separate Reconnaissance Battalion": { faction: "RGF", type: "UNK"},
 
   // PMC
   "Overwatch 6 Patrol Group": { faction: "PMC", type: "Light Infantry" },
