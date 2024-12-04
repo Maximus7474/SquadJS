@@ -59,6 +59,7 @@ export default {
 
   // VDV
   "217th Guards Airborne Regiment": { faction: "VDV", type: "Air assault" },
+  "108th Guards Air Assault Regiment": { faction: "VDV", type: "Mechanized" },
   "104th Tank Battalion": { faction: "VDV", type: "Armored" },
   "7th Guards Mountain Air Assault Division": { faction: "VDV", type: "Combined Arms" },
   "150th Support Battalion": { faction: "VDV", type: "Logistics" },
@@ -82,7 +83,12 @@ export default {
   "Irregular Light Infantry": { faction: "INS", type: "Light Infantry" },
   "Irregular Fire Support Group": { faction: "INS", type: "Combined Arms" },
   "Irregular Mechanized Platoon": { faction: "INS", type: "Mechanized" },
-
+  // IMF
+  "Irregular Armored Squadron": { faction: "IMF", type: "Armored" },
+  "Irregular Battle Group": { faction: "IMF", type: "Combined Arms" },
+  "Irregular Light Infantry": { faction: "IMF", type: "Light Infantry" },
+  "Irregular Fire Support Group": { faction: "IMF", type: "Combined Arms" },
+  "Irregular Mechanized Platoon": { faction: "IMF", type: "Mechanized" },
 
   // RGF
   "6th Separate Tank Brigade": { faction: "RGF", type: "Armored" },
