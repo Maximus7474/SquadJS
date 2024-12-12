@@ -18,6 +18,7 @@ export default {
   "12th Armored Regiment of Canada": { faction: "CAF", type: "Light Infantry" },
   "1st Battalion, Royal 22e Régiment": { faction: "CAF", type: "Mechanized" },
   "6 Canadian Combat Support Brigade": { faction: "CAF", type: "Logistics" },
+  "12e Régiment Blindé du Canada": { faction: "CAF", type: "Armored" },
 
   // USA
   "1st Brigade Combat Team, 82nd Airborne Division": { faction: "USA", type: "Air assault" },
@@ -70,12 +71,14 @@ export default {
   "1st Battalion, Legion of Babylon": { faction: "MEA", type: "Combined Arms" },
   "4th Border Guards Group": { faction: "MEA", type: "Light Infantry" },
   "3rd King Qadesh Mechanized Infantry Brigade": { faction: "MEA", type: "Mechanized" },
+  "Vizir Hussein 2nd Support Battalion": { faction: "MEA", type: "Logistics" },
 
   // TLF
   "1st Commando Brigade Battle Group": { faction: "TLF", type: "Air assault" },
   "4th Armored Brigade Battle Group": { faction: "TLF", type: "Armored" },
   "1st Army Battle Group": { faction: "TLF", type: "Combined Arms" },
   "66th Mechanized Infantry Brigade Battle Group": { faction: "TLF", type: "Mechanized" },
+  "51st Motorized Infantry Brigade Battle Group": { faction: "TLF", type: "Motorized"},
 
   // INS
   "Irregular Armored Squadron": { faction: "INS", type: "Armored" },
@@ -84,7 +87,6 @@ export default {
   "Irregular Fire Support Group": { faction: "INS", type: "Combined Arms" },
   "Irregular Mechanized Platoon": { faction: "INS", type: "Mechanized" },
   "Irregular Motorized Platoon": { faction: "INS", type: "Motorized"},
-
 
   // RGF
   "6th Separate Tank Brigade": { faction: "RGF", type: "Armored" },
