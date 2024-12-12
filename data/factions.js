@@ -95,7 +95,7 @@ export default {
   "336th Guards Naval Infantry Brigade": { faction: "RGF", type: "Amphibious Assault" },
   "3rd Motor Rifle Brigade": { faction: "RGF", type: "Motorized" },
   "78th Detached Logistics Brigade": { faction: "RGF", type: "Logistics" },
-  "1398th Separate Reconnaissance Battalion": { faction: "RGF", type: "UNK"},
+  "1398th Separate Reconnaissance Battalion": { faction: "RGF", type: "Light Infantry"},
 
   // PMC
   "Overwatch 6 Patrol Group": { faction: "PMC", type: "Light Infantry" },
