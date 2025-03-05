@@ -46,6 +46,7 @@ export default {
   "112th Medium Combined Arms Brigade": { faction: "PLA", type: "Motorized" },
   "80th Support Brigade": { faction: "PLA", type: "Logistics" },
   "14th Amphibious Combined Arms Brigade": { faction: "PLA", type: "Amphibious Assault" },
+  "80th Combined Arms Brigade": { faction: "PLA", type: "Combined Arms" },
 
   // PLA MC
   "4th Marine Special Combat Battalion": { faction: "PLA MC", type: "Light Infantry" },
