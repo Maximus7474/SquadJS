@@ -18,12 +18,6 @@ export default class DiscordPlayerKicked extends DiscordBasePlugin {
         default: '',
         example: '667741905228136459'
       },
-      chatColors: {
-        required: false,
-        description: 'The color of the embed for each kick.',
-        default: {},
-        example: { ChatAll: 16761867 }
-      },
       color: {
         required: false,
         description: 'The color of the embed.',
@@ -47,8 +41,6 @@ export default class DiscordPlayerKicked extends DiscordBasePlugin {
   }
 
   async onPlayerKick(info) {
-    if (this.options.ignoreChats.includes(info.chat)) return;
-
     await this.sendDiscordMessage({
       embed: {
         title: `Player Kicked`,
