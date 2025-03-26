@@ -133,8 +133,7 @@
       "plugin": "DiscordPlayerKicked",
       "enabled": true,
       "discordClient": "discord",
-      "channelID": "",
-      "chatColors": {},
+      "channelID": "1121787967564939394",
       "color": 16761867
     },
     {
