@@ -130,6 +130,14 @@
       ]
     },
     {
+      "plugin": "DiscordPlayerKicked",
+      "enabled": true,
+      "discordClient": "discord",
+      "channelID": "",
+      "chatColors": {},
+      "color": 16761867
+    },
+    {
       "plugin": "DiscordDebug",
       "enabled": false,
       "discordClient": "discord",
