@@ -16,6 +16,8 @@ import RoundTickets from './round-tickets.js';
 import RoundWinner from './round-winner.js';
 import ServerTickRate from './server-tick-rate.js';
 import PlayerJoinSucceeded from './player-join-succeeded.js';
+import PlayerKickInitial from './player-kick-initial.js';
+import PlayerKickValidation from './player-kick-validation.js';
 export default class SquadLogParser extends LogParser {
   constructor(options) {
     super('SquadGame.log', options);
@@ -38,7 +40,9 @@ export default class SquadLogParser extends LogParser {
       RoundTickets,
       RoundWinner,
       ServerTickRate,
-      PlayerJoinSucceeded
+      PlayerJoinSucceeded,
+      PlayerKickInitial,
+      PlayerKickValidation,
     ];
   }
 }
